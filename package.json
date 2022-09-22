@@ -6,6 +6,7 @@
     "serve": "vite serve",
     "build": "vite build",
     "dev": "vite",
+    "lint": "vite lint",
     "preview": "vite preview",
     "start": "node server.js"
   },
