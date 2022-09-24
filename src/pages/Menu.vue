@@ -3,8 +3,8 @@
         <v-layout>
             <v-main>
                 <v-container fluid>
-                    <v-app-bar-nav-icon id="menu" @click="goTo">X</v-app-bar-nav-icon>
-                    <div id="bienMenu">Hola Alberto</div>
+                    <v-btn variant="text" id="menu" @click="goTo">X</v-btn>
+                    <div id="bienvenido">Hola Alberto</div>
                 </v-container>
                 <v-banner
             lines="one"
@@ -66,13 +66,12 @@
 </script>
 
 <style>
-    #bienMenu{
-        font-size: 36px;
-    }
     #menu{
         position: absolute;
         top: 5%;
-        right: 5%;
+        right: 2%;
+        font-size: 30px;
+        color: black;
     }
 
 </style>

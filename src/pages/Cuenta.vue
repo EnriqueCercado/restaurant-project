@@ -3,9 +3,9 @@
         <v-layout>
             <v-main>
                 <v-container fluid>
-                    <div id="tituloCuenta">Divide la cuenta</div>
-                    <div id="mesaPedido">Mesa {{number}} de <b>Alberto</b></div><br>
-                    <h4 id="eligeCuenta">Elige cómo pagar</h4>
+                    <div id="bienvenido">Divide la cuenta</div>
+                    <table-post :number="number"></table-post>
+                    <h4>Elige cómo pagar</h4>
                     <v-radio-group v-model="radioGroup" >
                         <v-radio  label="Mitad y mitad" :value="1">
                         </v-radio>
@@ -29,14 +29,19 @@
             </v-main>
         </v-layout>
         <div>
-            <v-btn id="botonHome" @click="goTo" width="90%" color="info">GUARDAR</v-btn>
+            <v-btn id="unBtn" @click="goTo" width="90%" color="info">GUARDAR</v-btn>
         </div>
     </v-card>    
 </template>
 
 <script>
     import TableService from '../services/TableService';
+    import TablePost from '../components/TablePost.vue'
     export default {
+        components:{
+            TablePost
+        },
+
         data () {
             return {
                 radioGroup: 1,
@@ -52,15 +57,12 @@
         },
 
         mounted(){
-            this.number = TableService.getTable()
+            this.number = TableService.get("mesa")
         }
     }
 </script>
 
 <style>
-    #tituloCuenta{
-        font-size: 36px;
-    }
 
     #subtextCuenta{
         position: absolute;

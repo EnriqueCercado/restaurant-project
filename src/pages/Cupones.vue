@@ -3,8 +3,8 @@
         <v-layout>
             <v-main>
                 <v-container fluid>
-                    <div id="tituloCuenta">Cupones</div>
-                    <h4 id="eligeCuenta">Aplica el cupón que desees</h4>
+                    <div id="bienvenido">Cupones</div><br>
+                    <h4>Aplica el cupón que desees</h4>
                     <v-radio-group v-model="radioGroup" >
                         <v-radio  label="30% De descuento" :value="1">
                         </v-radio>
@@ -18,12 +18,13 @@
             </v-main>
         </v-layout>
         <div>
-            <v-btn id="botonHome" @click="goTo" width="90%" color="info">Aplicar</v-btn>
+            <v-btn id="unBtn" @click="goTo" width="90%" color="info">Aplicar</v-btn>
         </div>
     </v-card>    
 </template>
 
 <script>
+    import TableService from '../services/TableService';
     export default {
         data () {
             return {
@@ -33,6 +34,11 @@
 
         methods:{
             goTo(){
+                if(TableService.has("desc")){
+                    TableService.set("desc", this.radioGroup)
+                } else{
+                    TableService.append("desc", this.radioGroup)
+                }
                 window.location.pathname = "/pedido"
             }
         },

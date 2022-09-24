@@ -26,7 +26,7 @@
         }),
 
         beforeMount(){
-            TableService.getResumeTable(TableService.getTable()).then((response) => {
+            TableService.getResumeTable(TableService.get("mesa")).then((response) => {
                     this.result = response.data
                     this.ready = true
                 })

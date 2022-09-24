@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div id="mesaPost">
         Mesa {{number}} de <b>Alberto</b>
-    </div>
+    </div><br>
 </template>
 
 <script>
@@ -9,3 +9,9 @@
         props: ['number']
     }
 </script>
+
+<style>
+    #mesaPost{
+        font-size: 28px;
+    }
+</style>

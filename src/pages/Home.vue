@@ -3,21 +3,20 @@
         <v-layout> 
         <v-main >
             <v-container fluid>
-                <v-app-bar-nav-icon id="menuHome" @click="goToProfile"></v-app-bar-nav-icon>
+                <img src="../assets/menu.png" height="100" id="menuHome" @click="goToProfile">
                 
-                <div id="bienHome">Bienvenido</div>
-                <div id="mesaHome"><table-post :number="number"></table-post></div><br>
+                <div id="bienvenido">Bienvenido</div>
+                <table-post :number="number"></table-post>
                 
             </v-container>
             <div id="divHome">
                 <img id="hunan" src="../assets/hunan.png"><br>
                 Para comenzar realiza tu orden
             </div><br><br>
-            
         </v-main>
         </v-layout>
         <div>
-            <v-btn id="botonHome" @click="goTo" width="90%" color="info">ORDENAR</v-btn>
+            <v-btn id="unBtn" @click="goTo" width="90%" color="info">ORDENAR</v-btn>
         </div>
     </v-card>
 </template>
@@ -39,14 +38,15 @@
 
         methods:{
             goTo(){
+                window.location.search += "&ready=false" 
                 window.location.pathname = "/pedido"
             },
             goToProfile(){
                 window.location.pathname = "/menu"
-            }
+            },
         },
         mounted(){
-            this.number = TableService.getTable()
+            this.number = TableService.get("mesa")
         }
     }
 </script>
@@ -55,24 +55,22 @@
     #hunan{
         height: 120px;
     }
-    #bienHome{
+    #bienvenido{
         font-size: 36px;
-    }
-    #mesaHome{
-        font-size: 28px;
     }
     #divHome{
         text-align: center;
         font-size: 28px;
     }
-    #botonHome{
+    #unBtn{
         position: absolute;
         top: 75%;
         left: 5%;
     }
     #menuHome{
         position: absolute;
-        top: 5%;
-        right: 5%;
+        top: -3%;
+        right: -3%;
+        outline: none;
     }
 </style>

@@ -2,7 +2,7 @@
     <v-layout>
         <v-main >
             <v-container fluid>
-                <div id="tituloPagar">Realiza tu pago</div>
+                <div id="bienvenido">Realiza tu pago</div>
                 <tarjeta 
                     :name="name.toUpperCase()"
                     :number="cardNumber"
@@ -93,10 +93,8 @@
                     </section>
                 </v-card>
             </v-container>
-            <div id="botones">
-                <v-btn @click="goBack" color="info" variant="outlined">ATRÁS</v-btn> &nbsp;&nbsp;&nbsp;
-                <v-btn to="/pago-exitoso" flat color="info">REALIZAR PAGO</v-btn>
-            </div>
+            <v-btn id="btnsPagar" @click="goBack" color="info" variant="outlined">ATRÁS</v-btn> &nbsp;&nbsp;&nbsp;
+            <v-btn id="btnsPagar" to="/pago-exitoso" flat color="info">REALIZAR PAGO</v-btn>
         </v-main>
     </v-layout>    
 </template>
@@ -152,17 +150,16 @@
                 v => v.length <= 3 || 'El número debe ser de 3 dígitos.',
                 v => v.length >= 3 || 'El número debe ser de 3 dígitos.',
             ]
-        }),
-    
-        setup () {
-        }
+        })
     }
 </script>  
 
 <style>
-    #botones{
-        text-align: center;
+    #btnsPagar{
+        left: 10%;
+        width: 37.5%;
     }
+
     #texto-agregar{
         position: absolute;
         left: 15%;
@@ -170,9 +167,6 @@
         font-size: 15px;
     }
 
-    #tituloPagar{
-        font-size: 36px;
-    }
     #iconCard{
         position: absolute;
         left: 80%;

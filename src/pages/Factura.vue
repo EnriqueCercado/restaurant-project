@@ -2,7 +2,7 @@
     <v-layout>
         <v-main >
             <v-container fluid>
-                <div id="tituloFactura">Factura tu orden</div>
+                <div id="bienvenido">Factura tu orden</div>
                 <v-card height="100%"  color="#F5F5F5">
                     <section>
                         <v-form v-model="valid">
@@ -183,7 +183,7 @@
                     </section>
                 </v-card> 
             </v-container>
-            <div id="botones">
+            <div id="boton">
                 <v-btn width="90%" to="/factura-exitosa" flat color="info">FACTURAR</v-btn>
             </div>
         </v-main>
@@ -193,9 +193,6 @@
 <script>
     export default {
         name: 'Pagar',
-
-        components: {
-        },
 
         data: () => ({
             valid: false,
@@ -222,15 +219,12 @@
                 v => !!v || 'Correo requerido.',
                 v => /.+@.+\..+/.test(v) || 'Correo inválido.'
             ]
-        }),
-    
-        setup () {
-        }
+        })
     }
 </script>  
 
 <style>
-    #botones{
+    #boton{
         text-align: center;
     }
     #texto-datos{
@@ -238,9 +232,5 @@
         left: 15%;
         top: 1%;
         font-size: 15px;
-    }
-
-    #tituloFactura{
-        font-size: 36px;
     }
 </style>

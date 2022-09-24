@@ -3,12 +3,12 @@
         <v-layout>
             <v-main>
                 <v-container fluid>
-                    <div id="tituloPagoEx">Factura</div><br><br>
-                    <div id="imgPagoEx">
+                    <div id="bienvenido">Factura</div><br><br>
+                    <div id="imgQR">
                         <img height="230" src="../assets/qr.png">
 
-                        <div id="listoPago">¡Hecho Alberto!</div>
-                        <p id="pPagoEx">Tu factura ha sido enviada a tu correo electrónico. <br>
+                        <div id="listo">¡Hecho Alberto!</div>
+                        <p id="pExitoso">Tu factura ha sido enviada a tu correo electrónico. <br>
                         También puedes descargarla en los enlaces que aparecen en esta pantalla.</p>
                     </div>
                 </v-container>
@@ -24,8 +24,6 @@
 <script>
     export default{
         name: 'factura-exitosa',
-        components: {
-        },
 
         methods:{
             goToPDF(){
