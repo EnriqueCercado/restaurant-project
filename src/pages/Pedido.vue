@@ -7,7 +7,18 @@
                 <div id="bienvenido" v-if="ready">Verifica</div>
                 <table-post :number="number"></table-post>
                 <h4>Resumen de su orden</h4> 
-                <items></items><br>
+                <v-sheet
+        color="grey"
+        class="px-3 pt-3 pb-3"
+        v-if="!result"
+        >
+        <v-skeleton-loader
+            class="mx-auto"
+            max-width="300"
+            type="heading"
+        >Cargando...</v-skeleton-loader>
+    </v-sheet>
+                <items v-else></items><br>
                 <h4 v-if="ready">Agregar propina</h4>
             </v-container>
             <propina v-if="ready"
@@ -31,13 +42,13 @@
             <span id="spanPedido4"><b>{{subtotal - discount}}</b></span>
         </div>
 
-        <v-btn id="btn1Pedido" v-if="!ready" @click="goToIndex" color="info" variant="outlined">ORDENAR MÁS</v-btn>
+        <v-btn id="btn1Pedido" v-if="!ready" @click="goToIndex" color="info" variant="outlined" :disabled="!habilitar">ORDENAR MÁS</v-btn>
 
-        <v-btn id="btn2Pedido" v-if="!ready" @click="addReady" flat color="info">PAGAR</v-btn>
+        <v-btn id="btn2Pedido" :disabled="!habilitar" v-if="!ready" @click="addReady" flat color="info">PAGAR</v-btn>
     </v-card>
-    <v-btn id="btn3Pedido" v-if="ready" @click="goBack" color="info" variant="outlined">ATRÁS</v-btn> 
+    <v-btn id="btn3Pedido" :disabled="!habilitar" v-if="ready" @click="goBack" color="info" variant="outlined">ATRÁS</v-btn> 
         
-    <v-btn id="btn4Pedido" v-if="ready" @click="goToPagar" flat color="info">CONTINUAR</v-btn>
+    <v-btn id="btn4Pedido" :disabled="!habilitar" v-if="ready" @click="goToPagar" flat color="info">CONTINUAR</v-btn>
 </template>
 
 <script>
@@ -63,7 +74,8 @@
                 tip: 0,
                 total: 0,
                 toggle: 3,
-                number: 0
+                number: 0,
+                habilitar: false
             }
         },
 
@@ -97,9 +109,12 @@
         },
 
         mounted(){
+            this.habilitar = false
+            
             if(TableService.has("ready")){
-                this.ready = true
-            }
+                    this.ready = true
+                }
+
             TableService.getResumeTable(TableService.get("mesa")).then((res) =>{
                 this.result = res.data
                 this.subtotal = this.result.results.amounts.subtotal
@@ -112,7 +127,9 @@
                         this.discount = 100
                     }
                 }
+                this.habilitar = true
             })
+
             this.number = TableService.get("mesa")
         }
     }
