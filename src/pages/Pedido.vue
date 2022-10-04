@@ -7,18 +7,7 @@
                 <div id="bienvenido" v-if="ready">Verifica</div>
                 <table-post :number="number"></table-post>
                 <h4>Resumen de su orden</h4> 
-                <v-sheet
-        color="grey"
-        class="px-3 pt-3 pb-3"
-        v-if="!result"
-        >
-        <v-skeleton-loader
-            class="mx-auto"
-            max-width="300"
-            type="heading"
-        >Cargando...</v-skeleton-loader>
-    </v-sheet>
-                <items v-else></items><br>
+                <items></items><br>
                 <h4 v-if="ready">Agregar propina</h4>
             </v-container>
             <propina v-if="ready"
