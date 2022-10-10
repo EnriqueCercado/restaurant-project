@@ -1,5 +1,5 @@
 <template>
-    <v-layout>
+    <v-layout >
         <v-main >
             <v-container fluid>
                 <div id="bienvenido">Realiza tu pago</div>
@@ -91,7 +91,7 @@
                             </v-container>
                         </v-form>
                     </section>
-                </v-card>
+                </v-card><br><br>
             </v-container>
             <v-btn id="btnsPagar" @click="goBack" color="info" variant="outlined">ATRÁS</v-btn> &nbsp;&nbsp;&nbsp;
             <v-btn id="btnsPagar" to="/pago-exitoso" flat color="info">REALIZAR PAGO</v-btn>
@@ -157,6 +157,7 @@
 <style>
     #btnsPagar{
         left: 10%;
+        bottom: 4%;
         width: 37.5%;
     }
 

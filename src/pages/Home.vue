@@ -64,7 +64,7 @@
     }
     #unBtn{
         position: absolute;
-        top: 75%;
+        bottom: 10%;
         left: 5%;
     }
     #menuHome{

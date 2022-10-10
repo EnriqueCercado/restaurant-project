@@ -40,14 +40,14 @@
 
     #btn1Pago{
         position: absolute;
-        bottom: 15%;
+        bottom: 10%;
         left: 10%;
         width: 37.5%;
     }
 
     #btn2Pago{
         position: absolute;
-        bottom: 15%;
+        bottom: 10%;
         right: 10%;
         width: 37.5%;
     }

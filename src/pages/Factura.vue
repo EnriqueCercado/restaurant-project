@@ -181,11 +181,9 @@
                             </v-container>
                         </v-form>
                     </section>
-                </v-card> 
+                </v-card> <br><br>
             </v-container>
-            <div id="boton">
-                <v-btn width="90%" to="/factura-exitosa" flat color="info">FACTURAR</v-btn>
-            </div>
+            <v-btn id="btnFactura" width="90%" to="/factura-exitosa" flat color="info">FACTURAR</v-btn>
         </v-main>
     </v-layout>
 </template>
@@ -224,8 +222,9 @@
 </script>  
 
 <style>
-    #boton{
-        text-align: center;
+    #btnFactura{
+        left: 5%;
+        bottom: 3%;
     }
     #texto-datos{
         position: absolute;

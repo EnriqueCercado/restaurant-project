@@ -48,7 +48,7 @@
 <style>
     #card{
         background-color: #C1C1C1;
-        width: 324px;
+        width: 100%;
         height: 192px;
         border-radius: 10px;
     }
