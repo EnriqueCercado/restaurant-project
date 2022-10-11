@@ -21,6 +21,3 @@ node_modules
 *.njsproj
 *.sln
 *.sw?
-
-.firebase
-.github
