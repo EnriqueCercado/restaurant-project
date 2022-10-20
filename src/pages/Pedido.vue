@@ -11,9 +11,10 @@
                 <h4 v-if="ready">Agregar propina</h4>
             </v-container>
             <propina v-if="ready"
-            :subtotal="subtotal"
+            :subtotal="Number(subtotal)"
             :discount="discount"
             :tip="tip"
+            :habilitar="habilitar"
             ></propina>
         </v-main>
         </v-layout>
@@ -28,7 +29,7 @@
             <span id="spanPedido">{{subtotal}}</span><br>
             <span id="spanPedido2">- {{discount}}</span><br>
             <span id="spanPedido3">{{tip}}</span><br>
-            <span id="spanPedido4"><b>{{subtotal - discount}}</b></span>
+            <span id="spanPedido4"><b>{{subtotal}}</b></span>
         </div>
 
         <v-btn id="btn1Pedido" v-if="!ready" @click="goToIndex" color="info" variant="outlined" :disabled="!habilitar">ORDENAR MÁS</v-btn>
@@ -61,7 +62,6 @@
                 subtotal: 0,
                 discount: 0,
                 tip: 0,
-                total: 0,
                 toggle: 3,
                 number: 0,
                 habilitar: false
@@ -107,11 +107,18 @@
             TableService.getResumeTable(TableService.get("mesa")).then((res) =>{
                 this.result = res.data
                 this.subtotal = this.result.results.amounts.subtotal
+                if(TableService.has("cuenta")){
+                    if(TableService.get("cuenta") == -1){
+                        this.subtotal = Math.round(((this.result.results.amounts.subtotal / 2) + Number.EPSILON) * 100) / 100
+                    } else {
+                        this.subtotal = TableService.get("cuenta")
+                    }
+                }
                 if(TableService.has("desc")){
                     if(TableService.get("desc") == 1){
-                        this.discount = Math.round(((this.result.results.amounts.subtotal * .3) + Number.EPSILON) * 100) / 100
+                        this.discount = Math.round(((this.subtotal * .3) + Number.EPSILON) * 100) / 100
                     }else if(TableService.get("desc") == 2){
-                        this.discount = Math.round(((this.result.results.amounts.subtotal * .1) + Number.EPSILON) * 100) / 100
+                        this.discount = Math.round(((this.subtotal * .1) + Number.EPSILON) * 100) / 100
                     }else{
                         this.discount = 100
                     }

@@ -13,9 +13,9 @@
                         </v-radio>
                         <v-row>
                             <v-col cols="12">
-                                <v-text-field
+                                <v-text-field :disabled="radioGroup != 2"
                                 label="Cantidad"
-                                model-value= 0.00
+                                v-model="cantidad"
                                 prefix="$"
                                 ><div id="subtextCuenta">por invitado</div></v-text-field>
                                 
@@ -46,12 +46,27 @@
             return {
                 radioGroup: 1,
                 number: 0,
-                cantidad: 0
+                cantidad: null
             }
         },
 
         methods:{
             goTo(){
+                if(TableService.has("cuenta")){
+                    if(this.radioGroup == 2){
+                        TableService.set("cuenta", this.cantidad)
+                    } else {
+                        this.radioGroup = this.radioGroup * -1
+                        TableService.set("cuenta", this.radioGroup)
+                    }
+                } else {
+                    if(this.radioGroup == 2){
+                        TableService.append("cuenta", this.cantidad)
+                    } else {
+                        this.radioGroup = this.radioGroup * -1
+                        TableService.append("cuenta", this.radioGroup)
+                    }
+                }
                 window.location.pathname = "/pedido"
             }
         },

@@ -2,28 +2,28 @@
     <div>
         <div>
             <v-btn-toggle v-model="toggle">
-            <v-btn @click="tip = Math.round(((subtotal * .1) + Number.EPSILON) * 100) / 100" >
+            <v-btn :disabled="!habilitar" @click="tip = Math.round(((subtotal * .1) + Number.EPSILON) * 100) / 100" >
                 <div>
                     <h4>10%</h4>
                     <p>$ {{Math.round(((subtotal * .1) + Number.EPSILON) * 100) / 100}}</p>
                 </div>
             </v-btn>
 
-            <v-btn @click="tip = Math.round(((subtotal * .15) + Number.EPSILON) * 100) / 100">
+            <v-btn :disabled="!habilitar" @click="tip = Math.round(((subtotal * .15) + Number.EPSILON) * 100) / 100">
                 <div>
                     <h4>15%</h4>
                     <p>$ {{Math.round(((subtotal * .15) + Number.EPSILON) * 100) / 100}}</p>
                 </div>                        
             </v-btn>
 
-            <v-btn @click="tip = Math.round(((subtotal * .2) + Number.EPSILON) * 100) / 100">
+            <v-btn :disabled="!habilitar" @click="tip = Math.round(((subtotal * .2) + Number.EPSILON) * 100) / 100">
                 <div>
                     <h4>20%</h4>
                     <p>$ {{Math.round(((subtotal * .2) + Number.EPSILON) * 100) / 100}}</p>
                 </div>                        
             </v-btn>
 
-            <v-btn @click="tip = Math.round(((subtotal * .25) + Number.EPSILON) * 100) / 100">
+            <v-btn :disabled="!habilitar" @click="tip = Math.round(((subtotal * .25) + Number.EPSILON) * 100) / 100">
                 <div>
                     <h4>25%</h4>
                     <p>$ {{Math.round(((subtotal * .25) + Number.EPSILON) * 100) / 100}}</p>
@@ -49,7 +49,7 @@
             </v-banner-text>
 
             <template v-slot:actions>
-                <v-btn color="info" @click="goToMetodo">Cambiar</v-btn>
+                <v-btn :disabled="!habilitar" color="info" @click="goToMetodo">Cambiar</v-btn>
             </template>
                             
         </v-banner>
@@ -57,7 +57,7 @@
             lines="one"
             class="my-4"
             >
-            <v-banner-text @click="goToCupon">
+            <v-banner-text :disabled="!habilitar" @click="goToCupon">
                 <img src="../assets/facturaIcon.png" height="30" width="30">
                 <div id="texto-banner">
                     Aplicar cupón
@@ -65,7 +65,7 @@
             </v-banner-text>
                             
         </v-banner>
-        <v-btn variant="text" @click="goToCuenta"  id="addPedido"><img src="../assets/add-user.png" height="30" ></v-btn>
+        <v-btn variant="text" :disabled="!habilitar" @click="goToCuenta"  id="addPedido"><img src="../assets/add-user.png" height="30" ></v-btn>
         <div id="cuenta2">
             Subtotal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<br>
             Descuento &nbsp;&nbsp;$<br>
@@ -89,6 +89,7 @@
             "subtotal",
             "discount",
             "tip",
+            "habilitar"
         ],
 
         methods:{

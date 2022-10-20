@@ -113,7 +113,7 @@
     #nameCard{
         position: absolute;
         left: 8%;
-        top: 30%;
+        top: 29%;
         font-size: 11px;
         color: #868E96;
     }
